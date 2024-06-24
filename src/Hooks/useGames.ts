@@ -45,21 +45,27 @@ export interface Game {
 const useGames = () => {
     const [games, setGames] = useState<Game[]>([]); // Specify the type of 'games' as an array of Game objects. Set the initial value to an empty array
     const [error, setError] = useState(""); //set the type of 'error' as a string. Ititialize it as an empty string
+    const [isLoading, setLoading] = useState(false); //set the type of 'isLoading' as a boolean. Initialize it as false
 
   useEffect(() => {
     const controller = new AbortController();
+
+    setLoading(true); // Set isLoading to true
+
     apiClient
     .get<FetchGamesResponse>("/games", { signal: controller.signal }) // Fill up a FetchGamesResponse object with the data from the API
       .then((res) => {
-        setGames(res.data.results)}) // Set the games state to the results of the API call
+        setGames(res.data.results);// Set the games state to the results of the API call
+        setLoading(false);}) //set isLoading to false to remove the loading skeleton
       .catch((err) => {
         if (err instanceof CanceledError) return; // If the error is an instance of CanceledError, return
         setError(err.message)
+        setLoading(false); //set isLoading to false to remove the loading skeleton
     });
       return () => controller.abort(); // Abort the controller when the component unmounts
   },[]);
 
-  return { games, error };
+  return { games, error, isLoading };
   
 }
 
