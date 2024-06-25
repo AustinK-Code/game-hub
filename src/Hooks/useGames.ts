@@ -19,6 +19,8 @@ export interface Game {
     background_image: string;
     parent_platforms: {platform:Platform}[];// The API is weird and returns an array of objects with a platform property
     metacritic: number;
+    rating_top: number;
+    rating: number;
   }
 
 const useGames = (gameQuery:GameQuery) => useData<Game>('/games',{
