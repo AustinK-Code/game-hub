@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Link, Show, Text } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -59,6 +59,7 @@ function App() {
                 setGameQuery({ ...gameQuery, sortOrder })
               }
             />
+            <Text>All Data pulled from <Link href="https://rawg.io/apidocs" color='teal.500'>RAWG.io</Link></Text>
           </HStack>
         </Box>
         <GameGrid gameQuery={gameQuery} />
