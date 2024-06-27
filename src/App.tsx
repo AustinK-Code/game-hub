@@ -136,7 +136,6 @@ function App() {
                   />
                 </MenuList>
               </Menu>
-
               <Text>
                 All Data pulled from{" "}
                 <Link href="https://rawg.io/apidocs" color="teal.500">
