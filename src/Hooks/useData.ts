@@ -10,7 +10,7 @@ interface FetchResponse<T> {
 
 
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {// using ? makes it optional
-    const [data, setData] = useState<T[]>([]); 
+    const [data, setData] = useState<T[]>([]); //Set Default to empty array. Use Generic type of T[] 
     const [error, setError] = useState(""); //set the type of 'error' as a string. Ititialize it as an empty string
     const [isLoading, setLoading] = useState(false); //set the type of 'isLoading' as a boolean. Initialize it as false
 
